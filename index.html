@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TaGunner EQ V15 - AMDA AUDIO</title><link rel="stylesheet" href="style.css"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#020617"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
 <body>
-<div class="top"><h1>TaGunner<br><b>EQ</b></h1><div class="sub">AMDA • AUDIO • V15 • BISA OFFLINE • JADI APLIKASI</div><div class="bar"></div></div>
+<div class="top"><h1>TaGunner<br><b>EQ</b></h1><div class="sub">AMDA • AUDIO • V15 • PRO APK</div><div class="bar"></div></div>
 <div class="menu" id="topMenu">
 <button class="on" onclick="showPage('home',this)">🏠 HOME</button>
 <button onclick="showPage('dynamics',this)">📈 DYNAMICS</button>
@@ -12,7 +12,7 @@
 <button onclick="showPage('preset',this)">🎵 PRESET</button>
 <button onclick="showPage('setting',this)">⚙️ SETTING</button>
 </div>
-<div class="warn">🎧 VU WES ALUS BOS! - <button onclick="installApp()" style="background:#000;color:#ffd700;border:0;padding:4px 10px;border-radius:10px;font-weight:900">📲 INSTALL JADI APLIKASI</button></div>
+<div class="warn">🎧 VU WES ALUS BOS! - <button onclick="installApp()" style="background:#000;color:#ffd700;border:0;padding:4px 10px;border-radius:10px;font-weight:900">📲 TAGUNNER PRO APP</button></div>
 <div class="player">
 <button onclick="document.getElementById('file').click()">📂 PILIH LAGU MP3</button>
 <input type="file" id="file" accept="audio/*">
@@ -27,7 +27,7 @@
 <div class="card"><div class="row"><span>● TaGunner EQ Premium</span><span>DSP • 31 BAND • 8D</span></div>
 <div class="pill"><button class="on" onclick="setPill(this,'MIX BUS')">MIX BUS ▼</button><button onclick="setPill(this,'HEAD')">HEAD</button><button onclick="setPill(this,'LIMITER')">LIMITER</button><button onclick="setPill(this,'VU')">VU</button><button onclick="setPill(this,'ANALYZER')">ANALYZER</button><button onclick="setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">♭ FLAT</button></div>
 <div id="pillInfo">Mode: MIX BUS bos! Pencet ANALYZER ben joget!</div>
-<div id="analyzerBox" style="display:block;background:#000;border:1px solid #a855f7;border-radius:12px;padding:10px;margin-top:8px;text-align:center">📊 ANALYZER JOGET BOS! GAK ENEK FILE YO JOGET!<div class="bars" id="anaBars"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+<div id="analyzerBox" style="display:block;background:#000;border:1px solid #a855f7;border-radius:12px;padding:10px;margin-top:8px;text-align:center">📊 ANALYZER<div class="bars" id="anaBars"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
 </div>
 <div class="eq" id="eqHome"></div>
 <div class="knobs"><div class="knob"><b>LOW</b><input type="range" id="low" min="-12" max="12" value="3"><span id="lowV">+3 dB</span></div><div class="knob"><b>MID</b><input type="range" id="mid" min="-12" max="12" value="2"><span id="midV">+2 dB</span></div><div class="knob"><b>HIGH</b><input type="range" id="high" min="-12" max="12" value="2"><span id="highV">+2 dB</span></div><div class="knob"><b>MASTER</b><input type="range" id="master" min="0" max="100" value="80"><span id="masterV">80%</span></div></div>
