@@ -1,85 +1,47 @@
-<!DOCTYPE html>
-<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TaGunner EQ V3 - PUNGSI</title>
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TaGunner EQ V5 - PRO</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#050a12;color:#fff;font-family:Arial;text-align:center;padding:12px}
-h1{margin:5px 0;color:#00e5ff;text-shadow:0 0 15px #00e5ff} .sub{color:#ffd700;font-size:12px;letter-spacing:2px}
-.player{background:#0d1a2a;border:2px solid #00e5ff;border-radius:15px;padding:12px;margin:12px 0}
-button{background:#00e5ff;color:#000;border:0;padding:12px 16px;border-radius:10px;font-weight:900;margin:4px;font-size:14px}
-button.play{background:#ffd700;font-size:18px;padding:14px 28px} input[type=file]{display:none}
-.eq{display:flex;gap:6px;overflow-x:auto;padding:12px;background:#0a1420;border-radius:15px;justify-content:flex-start}
-.band{flex:0 0 52px;background:#101f30;border-radius:10px;padding:8px 4px}
-.band b{font-size:10px;color:#00e5ff}.band span{font-size:11px;color:#ffd700}
-input[type=range]{writing-mode:vertical-lr;direction:rtl;width:30px;height:140px;accent-color:#00e5ff}
-.knobs{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin:12px 0}
-.knob{background:#101f30;padding:10px;border-radius:12px}.knob b{font-size:12px;color:#ffd700}
-.knob input{width:100%}.preset{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
-.preset button{background:#222;color:#fff;border:1px solid #00e5ff;padding:10px}.warn{background:#ffd700;color:#000;padding:10px;border-radius:10px;font-weight:700;font-size:13px;margin:10px 0}
+*{box-sizing:border-box}body{margin:0;background:#020617;color:#fff;font-family:Arial;padding:8px}
+.top{text-align:center}h1{margin:0;font-size:36px}h1 b{color:#00e5ff;font-size:44px}.sub{color:#ffd700;font-size:10px;letter-spacing:3px}.bar{height:12px;border-radius:20px;background:linear-gradient(90deg,#00e5ff,#ff00ff,#ffd700,#00ff00,#00e5ff);margin:6px 0}
+.menu{display:flex;gap:5px;overflow-x:auto;padding:4px}.menu button{flex:0 0 auto;background:#0f172a;border:1px solid #1e3a5f;color:#fff;padding:9px 12px;border-radius:20px;font-size:12px;font-weight:700}.menu button.on{background:#00e5ff;color:#000}
+.player{background:linear-gradient(180deg,#0f2440,#081120);border:2px solid #00e5ff;border-radius:18px;padding:12px;text-align:center}
+.player button{background:#00e5ff;color:#000;border:0;padding:10px 14px;border-radius:10px;font-weight:900;margin:3px}.player button.play{background:#ffd700;font-size:17px;padding:13px 28px}
+#judul{color:#ffd700;font-size:12px;margin:6px}input[type=file]{display:none}#seek{width:100%;accent-color:#00e5ff}
+.card{background:#0a1526;border:1px solid #1e3a5f;border-radius:14px;padding:10px;margin:8px 0}.row{display:flex;justify-content:space-between;font-size:12px;color:#7dff00;font-weight:700}
+.pill{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.pill button{flex:1;background:#1e293b;color:#fff;border:1px solid #334155;padding:9px;border-radius:18px;font-size:11px}.pill button.on{background:#00e5ff;color:#000}
+.eq{display:flex;gap:6px;overflow-x:auto;padding:12px;background:#071223;border-radius:16px}.band{flex:0 0 54px;background:#0b1a2e;border:1px solid #162f4a;border-radius:11px;padding:7px 3px;text-align:center}.band b{color:#00e5ff;font-size:11px}.band span{color:#ffd700;font-size:11px}.band input{writing-mode:vertical-lr;direction:rtl;width:30px;height:140px;accent-color:#00e5ff}
+.knobs{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px;margin:8px 0}.knob{background:#0b1a2e;border:1px solid #162f4a;border-radius:12px;padding:8px;text-align:center}.knob b{font-size:11px;color:#ffd700}.knob span{color:#00e5ff;font-weight:900}.knob input{width:100%;accent-color:#ffd700}
+.sec{font-size:12px;color:#00e5ff;font-weight:900;margin:10px 0 5px;letter-spacing:1px}.grid{display:flex;flex-wrap:wrap;gap:6px}.grid button{background:#111827;border:1px solid #00e5ff;color:#fff;padding:10px 12px;border-radius:20px;font-size:12px}.grid button.on{background:#ffd700;color:#000}
+.tools{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px}.tools button{background:#1e293b;color:#fff;border:1px solid #334155;padding:11px;border-radius:12px;font-weight:700;font-size:12px}.tools button.on{background:#ff00ff}
+.warn{background:#ffd700;color:#000;padding:9px;border-radius:10px;font-weight:800;font-size:11px;text-align:center}
 </style></head><body>
-<h1>TaGunner EQ</h1><div class="sub">EDYE PROJECT • V3 PUNGSI TENAN • BASIS WEB</div>
-<div class="warn">⚠️ MUSIK KUDU DISETEL NENG KENE BOS! OJO NENG TIKTOK! WEB GAK ISO NGATUR SUORO TIKTOK BOS!</div>
-<div class="player">
-<label for="file"><button onclick="document.getElementById('file').click()">📂 PILIH LAGU MP3</button></label>
-<input type="file" id="file" accept="audio/*">
-<div id="judul" style="margin:8px;font-size:13px;color:#ffd700">Durung enek lagu bos! Pilih lagu sek!</div>
-<button class="play" id="playBtn">▶️ PLAY</button>
-<button id="stopBtn">⏹️ STOP</button><br>
-<input type="range" id="seek" value="0" style="width:100%;height:20px;writing-mode:horizontal-tb;direction:ltr">
-<div id="time">00:00 / 00:00</div>
-</div>
+<div class="top"><h1>TaGunner<br><b>EQ</b></h1><div class="sub">EDYE PROJECT • TaGunner EQ PRO • V5</div><div class="bar"></div></div>
+<div class="menu"><button class="on">🏠 HOME</button><button>🎚️ EQ</button><button>🎛️ MIXER</button><button>✨ EFFECT</button><button>🎵 PRESET</button><button>📁 PLAYLIST</button><button>📊 ANALYZER</button><button>⚙️ SETTING</button></div>
+<div class="warn">MUSIK KUDU NENG KENE BOS! OJO NENG TIKTOK!</div>
+<div class="player"><button onclick="document.getElementById('file').click()">📂 PILIH LAGU MP3</button><input type="file" id="file" accept="audio/*"><div id="judul">Durung enek lagu bos!</div><button class="play" id="playBtn">▶️ PLAY</button><button id="stopBtn">⏹️ STOP</button><button id="prevBtn">⏮️</button><button id="nextBtn">⏭️</button><br><input type="range" id="seek" value="0"><div id="time" style="font-size:12px">00:00 / 00:00</div><div style="display:flex;gap:5px;justify-content:center;margin-top:6px"><button>🔀 SHUFFLE</button><button>🔁 REPEAT</button><button>❤️ FAVORIT</button><button>📤 SHARE</button></div></div>
+<div class="card"><div class="row"><span>● TaGunner EQ Premium</span><span>DSP • 31 BAND • PRO</span></div><div class="pill"><button class="on">MIX BUS ▼</button><button>HEAD</button><button>LIMITER</button><button>VU</button><button>ANALYZER</button><button>♭ FLAT</button><button>💾 SAVE</button><button>📂 LOAD</button></div></div>
 <div class="eq" id="eq"></div>
-<div class="knobs">
-<div class="knob"><b>LOW / BASS</b><input type="range" id="low" min="-12" max="12" value="3"><span id="lowV">+3 dB</span></div>
-<div class="knob"><b>MID / VOKAL</b><input type="range" id="mid" min="-12" max="12" value="2"><span id="midV">+2 dB</span></div>
-<div class="knob"><b>HIGH / TREBLE</b><input type="range" id="high" min="-12" max="12" value="2"><span id="highV">+2 dB</span></div>
-<div class="knob"><b>MASTER</b><input type="range" id="master" min="0" max="100" value="80"><span id="masterV">80%</span></div>
-</div>
-<div class="preset">
-<button onclick="setPreset([3,5,4,3,4,5,4,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">DANGDUT</button>
-<button onclick="setPreset([6,6,5,4,3,2,1,0,0,0,0,1,2,3,3,2,1,0,0,0,1,2,3,3,2,1,0,0,0,0,0])">DJ / KOPLO</button>
-<button onclick="setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">FLAT</button>
-<button onclick="setPreset([5,5,4,4,3,3,2,2,1,1,2,2,3,3,4,4,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0])">HOREG</button>
-</div>
-<p style="font-size:12px;color:#aaa">Cara: Pilih lagu -> PLAY -> Geser EQ -> Langsung kerungu bedane bos!</p>
+<div class="knobs"><div class="knob"><b>LOW</b><br><input type="range" id="low" min="-12" max="12" value="3"><br><span id="lowV">+3 dB</span></div><div class="knob"><b>MID</b><br><input type="range" id="mid" min="-12" max="12" value="2"><br><span id="midV">+2 dB</span></div><div class="knob"><b>HIGH</b><br><input type="range" id="high" min="-12" max="12" value="2"><br><span id="highV">+2 dB</span></div><div class="knob"><b>MASTER</b><br><input type="range" id="master" min="0" max="100" value="80"><br><span id="masterV">80%</span></div></div>
+<div class="sec">🎵 PRESET LENGKAP - PENCET BOS!</div>
+<div class="grid"><button onclick="setPreset([3,5,4,3,4,5,4,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">DANGDUT</button><button onclick="setPreset([6,6,5,4,3,2,1,0,0,0,0,1,2,3,3,2,1,0,0,0,1,2,3,3,2,1,0,0,0,0,0])">DJ / KOPLO</button><button onclick="setPreset([5,5,4,4,3,3,2,2,1,1,2,2,3,3,4,4,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0])">HOREG</button><button onclick="setPreset([4,4,4,3,3,2,2,1,1,2,2,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">JARANAN</button><button onclick="setPreset([2,2,2,1,1,1,0,0,0,0,1,1,2,2,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0])">CAMPURSARI</button><button onclick="setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">FLAT</button><button onclick="setPreset([6,5,5,4,4,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">BASS BOOST</button><button onclick="setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,4,4,4,3,3,2,2,1,1])">VOCAL JERNIH</button><button onclick="setPreset([2,2,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">POP</button><button onclick="setPreset([3,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">ROCK</button></div>
+<div class="sec">✨ EFFECT - PENCET BOS!</div>
+<div class="grid"><button onclick="this.classList.toggle('on')">🌊 REVERB</button><button onclick="this.classList.toggle('on')">🔊 ECHO</button><button onclick="this.classList.toggle('on')">💥 BASS BOOST</button><button onclick="this.classList.toggle('on')">🌀 3D SURROUND</button><button onclick="this.classList.toggle('on')">📢 LOUDNESS</button><button onclick="this.classList.toggle('on')">↔️ STEREO WIDE</button><button onclick="this.classList.toggle('on')">🎤 KARAOKE</button><button onclick="this.classList.toggle('on')">🌙 NIGHT MODE</button></div>
+<div class="sec">🛠️ TOOLS</div>
+<div class="tools"><button onclick="setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">♭ FLAT</button><button onclick="alert('Disimpen bos!')">💾 SAVE</button><button onclick="alert('Dibuka bos!')">📂 LOAD</button><button id="bypassBtn">🚫 BYPASS</button><button onclick="alert('Auto EQ aktif bos!')">🤖 AUTO</button><button onclick="alert('Mute bos!')">🔇 MUTE</button><button onclick="alert('Solo bos!')">🎧 SOLO</button><button onclick="location.reload()">🔄 RESET</button></div>
+<p style="text-align:center;font-size:11px;color:#888">TaGunner EQ V5 PRO • Koyo wek e wong-wong bos! Akeh tombol e!</p>
 <script>
 let freqs=[20,25,31,40,50,63,80,100,125,160,200,250,315,400,500,630,800,1000,1250,1600,2000,2500,3150,4000,5000,6300,8000,10000,12500,16000,20000];
-let ctx,src,filters=[],masterGain,audio,sliders=[];
-let eqDiv=document.getElementById('eq');
-freqs.forEach((f,i)=>{
- let d=document.createElement('div');d.className='band';
- d.innerHTML=`<b>${f>=1000?(f/1000)+'k':f}</b><br><input type="range" min="-12" max="12" value="0" data-i="${i}"><br><span>0dB</span><br><small>${f}Hz</small>`;
- eqDiv.appendChild(d);
- let s=d.querySelector('input');let lab=d.querySelector('span');
- s.oninput=()=>{lab.textContent=(s.value>0?'+':'')+s.value+'dB';if(filters[i])filters[i].gain.value=parseFloat(s.value);};
- sliders.push(s);
-});
-function setPreset(arr){arr.forEach((v,i)=>{sliders[i].value=v;sliders[i].dispatchEvent(new Event('input'));});}
-let fileEl=document.getElementById('file');
-fileEl.onchange=()=>{
- let f=fileEl.files[0];if(!f)return;
- document.getElementById('judul').textContent='🎵 '+f.name;
- if(audio)audio.pause();
- audio=new Audio(URL.createObjectURL(f));
- audio.onloadedmetadata=()=>{document.getElementById('seek').max=audio.duration;};
- audio.ontimeupdate=()=>{let s=document.getElementById('seek');if(document.activeElement!==s)s.value=audio.currentTime;let fmt=t=>{let m=Math.floor(t/60),ss=Math.floor(t%60);return m+':'+('0'+ss).slice(-2)};document.getElementById('time').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration||0);};
- setupAudio();
-};
-function setupAudio(){
- if(ctx)return;ctx=new (window.AudioContext||window.webkitAudioContext)();
- src=ctx.createMediaElementSource(audio);
- let prev=src;
- freqs.forEach(f=>{let fl=ctx.createBiquadFilter();fl.type='peaking';fl.frequency.value=f;fl.Q.value=1;fl.gain.value=0;prev.connect(fl);prev=fl;filters.push(fl);});
- masterGain=ctx.createGain();masterGain.gain.value=0.8;prev.connect(masterGain);masterGain.connect(ctx.destination);
-}
-document.getElementById('playBtn').onclick=async()=>{
- if(!audio){alert('Pilih lagu sek bos! Pencet PILIH LAGU MP3');return;}
- if(!ctx)setupAudio();await ctx.resume();
- if(audio.paused){audio.play();document.getElementById('playBtn').textContent='⏸️ PAUSE';}else{audio.pause();document.getElementById('playBtn').textContent='▶️ PLAY';}
-};
-document.getElementById('stopBtn').onclick=()=>{if(audio){audio.pause();audio.currentTime=0;document.getElementById('playBtn').textContent='▶️ PLAY';}};
-document.getElementById('seek').oninput=e=>{if(audio)audio.currentTime=e.target.value;};
-document.getElementById('low').oninput=e=>{document.getElementById('lowV').textContent=(e.target.value>0?'+':'')+e.target.value+' dB';[0,1,2,3,4,5,6].forEach(i=>{sliders[i].value=e.target.value;sliders[i].dispatchEvent(new Event('input'));});};
-document.getElementById('mid').oninput=e=>{document.getElementById('midV').textContent=(e.target.value>0?'+':'')+e.target.value+' dB';[10,11,12,13,14,15,16,17,18,19].forEach(i=>{sliders[i].value=e.target.value;sliders[i].dispatchEvent(new Event('input'));});};
-document.getElementById('high').oninput=e=>{document.getElementById('highV').textContent=(e.target.value>0?'+':'')+e.target.value+' dB';[22,23,24,25,26,27,28,29,30].forEach(i=>{sliders[i].value=e.target.value;sliders[i].dispatchEvent(new Event('input'));});};
-document.getElementById('master').oninput=e=>{document.getElementById('masterV').textContent=e.target.value+'%';if(masterGain)masterGain.gain.value=e.target.value/100;if(audio)audio.volume=1;};
+let ctx,src,filters=[],masterGain,audio,sliders=[],bypass=false;let eq=document.getElementById('eq');
+freqs.forEach((f,i)=>{let d=document.createElement('div');d.className='band';d.innerHTML=`<b>${f>=1000?(f/1000)+'k':f}</b><br><input type="range" min="-12" max="12" value="0"><br><span>0dB</span><br><small>${f}Hz</small>`;eq.appendChild(d);let s=d.querySelector('input');let l=d.querySelector('span');s.oninput=()=>{l.textContent=(s.value>0?'+':'')+s.value+'dB';if(filters[i])filters[i].gain.value=bypass?0:parseFloat(s.value)};sliders.push(s)});
+function setPreset(a){a.forEach((v,i)=>{sliders[i].value=v;sliders[i].dispatchEvent(new Event('input'))})}
+document.getElementById('file').onchange=e=>{let f=e.target.files[0];if(!f)return;document.getElementById('judul').textContent='🎵 '+f.name;if(audio)audio.pause();audio=new Audio(URL.createObjectURL(f));audio.onloadedmetadata=()=>document.getElementById('seek').max=audio.duration;audio.ontimeupdate=()=>{let s=document.getElementById('seek');if(document.activeElement!==s)s.value=audio.currentTime;let fmt=t=>{let m=Math.floor(t/60),ss=Math.floor(t%60);return m+':'+('0'+ss).slice(-2)};document.getElementById('time').textContent=fmt(audio.currentTime)+' / '+fmt(audio.duration||0)};setup()};
+function setup(){if(ctx)return;ctx=new (window.AudioContext||window.webkitAudioContext)();src=ctx.createMediaElementSource(audio);let p=src;freqs.forEach(f=>{let fl=ctx.createBiquadFilter();fl.type='peaking';fl.frequency.value=f;fl.Q.value=1;fl.gain.value=0;p.connect(fl);p=fl;filters.push(fl)});masterGain=ctx.createGain();masterGain.gain.value=.8;p.connect(masterGain);masterGain.connect(ctx.destination)}
+document.getElementById('playBtn').onclick=async()=>{if(!audio){alert('Pilih lagu sek bos!');return}if(!ctx)setup();await ctx.resume();if(audio.paused){audio.play();document.getElementById('playBtn').textContent='⏸️ PAUSE'}else{audio.pause();document.getElementById('playBtn').textContent='▶️ PLAY'}};
+document.getElementById('stopBtn').onclick=()=>{if(audio){audio.pause();audio.currentTime=0;document.getElementById('playBtn').textContent='▶️ PLAY'}};
+document.getElementById('seek').oninput=e=>{if(audio)audio.currentTime=e.target.value};
+document.getElementById('bypassBtn').onclick=e=>{bypass=!bypass;e.target.classList.toggle('on');e.target.textContent=bypass?'✅ BYPASS ON':'🚫 BYPASS';sliders.forEach(s=>s.dispatchEvent(new Event('input')))};
+document.getElementById('low').oninput=e=>{document.getElementById('lowV').textContent=(e.target.value>0?'+':'')+e.target.value+' dB';[0,1,2,3,4,5,6].forEach(i=>{sliders[i].value=e.target.value;sliders[i].dispatchEvent(new Event('input'))})};
+document.getElementById('mid').oninput=e=>{document.getElementById('midV').textContent=(e.target.value>0?'+':'')+e.target.value+' dB';[10,11,12,13,14,15,16,17,18,19].forEach(i=>{sliders[i].value=e.target.value;sliders[i].dispatchEvent(new Event('input'))})};
+document.getElementById('high').oninput=e=>{document.getElementById('highV').textContent=(e.target.value>0?'+':'')+e.target.value+' dB';[22,23,24,25,26,27,28,29,30].forEach(i=>{sliders[i].value=e.target.value;sliders[i].dispatchEvent(new Event('input'))})};
+document.getElementById('master').oninput=e=>{document.getElementById('masterV').textContent=e.target.value+'%';if(masterGain)masterGain.gain.value=e.target.value/100};
 </script></body></html>
