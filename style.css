@@ -55,3 +55,18 @@ input[type=file]{display:none}
 .bars{display:flex;gap:4px;height:80px;align-items:flex-end;margin-top:10px}
 .bars div{flex:1;background:linear-gradient(180deg,#00e5ff,#ff00ff);border-radius:6px 6px 0 0}
 .foot{text-align:center;font-size:11px;color:#888;margin:12px}
+/* ===== MENU NGISOR - TOOLS - BOS! ===== */
+.sec{font-size:13px;color:#00e5ff;font-weight:900;margin:14px 0 6px;letter-spacing:2px;text-shadow:0 0 10px #00e5ff}
+.tools{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.tools button{background:linear-gradient(180deg,#1e293b,#0f172a);color:#fff;border:1px solid #00e5ff55;padding:13px 6px;border-radius:14px;font-weight:800;font-size:12px;box-shadow:0 4px 12px #0008}
+.tools button:active{transform:scale(.95)}
+.tools button.on{background:linear-gradient(90deg,#ff00ff,#ff0055);color:#fff;box-shadow:0 0 15px #ff00ff}
+.tools button:nth-child(1){border-color:#00e5ff}
+.tools button:nth-child(5){border-color:#ffd700}
+
+/* ===== MENU NGISOR - BAWAH - NEMPEL - BOS! ===== */
+.bottom-menu{position:fixed;bottom:0;left:0;right:0;background:#071223;border-top:2px solid #00e5ff;display:flex;gap:4px;padding:8px 6px;padding-bottom:14px;z-index:99}
+.bottom-menu button{flex:1;background:#0f172a;color:#fff;border:1px solid #334155;padding:10px 2px;border-radius:12px;font-size:11px;font-weight:800}
+.bottom-menu button.on{background:#00e5ff;color:#000;box-shadow:0 0 12px #00e5ff}
+body{padding-bottom:80px}
+.foot{text-align:center;font-size:11px;color:#888;margin:12px}
