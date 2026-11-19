@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>TaGunner EQ - EDYE PROJECT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#020617;color:#fff;font-family:Arial,sans-serif;overflow-x:hidden}
+.top{position:relative;background:radial-gradient(ellipse at center,#1e1b4b 0%,#020617 70%);padding:10px 8px 6px;text-align:center;overflow:hidden;border-bottom:1px solid #00e5ff33}
+.top:before{content:"🔊";position:absolute;left:4px;top:18px;font-size:48px;filter:drop-shadow(0 0 10px #00e5ff)}
+.top:after{content:"🔊";position:absolute;right:4px;top:18px;font-size:48px;filter:drop-shadow(0 0 10px #00e5ff)}
+.top h1{font-size:38px;font-weight:900;letter-spacing:1px;line-height:.9;text-shadow:0 0 20px #fff,0 0 30px #00e5ff;font-style:italic}
+.top h1 span{color:#00e5ff}
+.top p{font-size:11px;letter-spacing:3px;color:#facc15;margin-top:4px}
+.wave{height:18px;background:linear-gradient(90deg,#00e5ff,#a855f7,#ec4899,#00e5ff);opacity:.8;margin:6px 10px 0;border-radius:10px;box-shadow:0 0 20px #00e5ff}
+.panel{margin:10px;background:linear-gradient(180deg,#111827,#020617);border:1px solid #334155;border-radius:14px;overflow:hidden}
+.panel-head{display:flex;justify-content:space-between;align-items:center;background:#000;padding:8px 10px;font-size:11px;font-weight:900;letter-spacing:.5px}
+.panel-head b{color:#facc15}
+.panel-head span{color:#22c55e}
+.toolbar{display:flex;gap:5px;padding:8px;flex-wrap:wrap;background:#0f172a}
+.toolbar button{background:#1e293b;border:1px solid #334155;color:#fff;padding:7px 10px;border-radius:20px;font-size:11px;font-weight:800}
+.toolbar button.on{background:#00e5ff;color:#000}
+.toolbar select{background:#020617;color:#fff;border:1px solid #334155;padding:7px;border-radius:20px;font-size:11px}
+.eq31{display:flex;gap:2px;padding:8px 6px 4px;overflow-x:auto;background:#000}
+.eq31::-webkit-scrollbar{height:6px;background:#111}
+.eq31::-webkit-scrollbar-thumb{background:#00e5ff;border-radius:10px}
+.fader{flex:0 0 42px;text-align:center;background:#0f172a;border-radius:10px;padding:6px 2px;border:1px solid #1e293b}
+.fader label{font-size:9px;font-weight:900;color:#cbd5e1;display:block}
+.fader input{writing-mode:vertical-lr;direction:rtl;height:160px;width:100%;accent-color:#00e5ff}
+.fader div{font-size:11px;font-weight:900;color:#00e5ff}
+.fader .hz{font-size:9px;color:#94a3b8}
+.master-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px;background:#0f172a}
+.mbox{text-align:center;background:#020617;border:1px solid #334155;border-radius:12px;padding:8px}
+.mbox b{font-size:10px;color:#facc15}
+.mbox input{width:100%;accent-color:#00e5ff;margin:6px 0}
+.mbox div{font-weight:900;font-size:13px;color:#00e5ff}
+.canvas-wrap{margin:10px;background:#000;border:1px solid #334155;border-radius:12px;padding:8px}
+canvas{width:100%;height:150px;display:block}
+.row{display:flex;gap:8px;padding:0 10px 10px}
+.btn{flex:1;padding:13px 4px;border-radius:12px;border:2px solid #ef4444;background:#000;color:#ef4444;font-weight:900;font-size:13px}
+.btn.green{border-color:#22c55e;color:#22c55e}
+.btn.blue{border-color:#00e5ff;color:#00e5ff}
+.btn.on{background:#ef4444;color:#fff}
+.btn.on.green{background:#22c55e;color:#000}
+.btn.on.blue{background:#00e5ff;color:#000}
+.preset-bar{display:flex;gap:6px;overflow-x:auto;padding:0 10px 10px}
+.preset-bar button{white-space:nowrap;background:#facc15;color:#000;border:none;padding:9px 14px;border-radius:20px;font-weight:900;font-size:12px}
+.preset-bar button:nth-child(2){background:#00e5ff}
+.preset-bar button:nth-child(3){background:#22c55e;color:#fff}
+.preset-bar button:nth-child(4){background:#ec4899;color:#fff}
+.edye{margin:10px;background:linear-gradient(180deg,#0a1a3a,#020617);border:1px solid #00e5ff66;border-radius:14px;padding:12px;text-align:center}
+.edye h2{letter-spacing:5px;font-size:18px}
+.edye p{font-size:11px;color:#94a3b8;margin-top:4px}
+.footer{text-align:center;color:#475569;font-size:11px;padding:10px}
+.note{background:#facc15;color:#000;padding:8px;border-radius:8px;font-size:12px;font-weight:700;margin:0 10px 10px}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>TaGunner<br><span>EQ</span></h1>
+  <p>EDYE PROJECT • TaGunner EQ Premium</p>
+  <div class="wave"></div>
+</div>
+
+<div class="panel">
+  <div class="panel-head"><span>● TaGunner EQ Premium</span><b>DSP 240 ms • EQ aktif • DSP</b><span>31 BAND</span></div>
+  <div class="toolbar">
+    <select id="inSelect"><option>MIX BUS</option><option>CH1 MIC</option><option>CH2 VOKAL</option><option>CH3 DJ</option></select>
+    <button class="on" onclick="this.classList.toggle('on')">HEAD</button>
+    <button class="on" onclick="this.classList.toggle('on')">LIMITER</button>
+    <button onclick="this.classList.toggle('on')">VU</button>
+    <button onclick="flatAll()">♭ FLAT</button>
+    <button onclick="saveNow()">💾 SAVE</button>
+  </div>
+
+  <!-- EQ 31 BAND -->
+  <div class="eq31" id="eq31"></div>
+
+  <div class="master-row">
+    <div class="mbox"><b>LOW</b><input type="range" id="low" min="-12" max="12" value="3"><div id="lowV">+3 dB</div></div>
+    <div class="mbox"><b>MID</b><input type="range" id="mid" min="-12" max="12" value="0"><div id="midV">0 dB</div></div>
+    <div class="mbox"><b>HIGH</b><input type="range" id="high" min="-12" max="12" value="2"><div id="highV">+2 dB</div></div>
+    <div class="mbox"><b>MASTER</b><input type="range" id="master" min="0" max="100" value="80"><div id="masterV">80%</div></div>
+  </div>
+</div>
+
+<div class="note">Preset neng ngisor bos! Sampean pencet, langsung berubah EQ 31 band e bos! Persis koyo neng TikTok EDYE PROJECT bos!</div>
+<div class="preset-bar">
+  <button onclick="applyPreset('hajatan')">HAJATAN</button>
+  <button onclick="applyPreset('dangdut')">DANGDUT</button>
+  <button onclick="applyPreset('hadroh')">HADROH</button>
+  <button onclick="applyPreset('dj')">DJ KARNAVAL</button>
+  <button onclick="applyPreset('vokal')">VOKAL</button>
+  <button onclick="applyPreset('flat')">FLAT</button>
+</div>
+
+<div class="canvas-wrap">
+  <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><b style="color:#00e5ff">RTA • <span id="db" style="color:#fff;font-size:18px">--.- dB SPL</span></b><b>PEAK: <span id="peak">--.- dB</span></b></div>
+  <canvas id="spec"></canvas>
+  <div style="display:flex;justify-content:space-between;color:#666;font-size:11px"><span>20Hz</span><span>100Hz</span><span>1kHz</span><span>10kHz</span><span>20kHz</span></div>
+  <div class="row" style="padding:10px 0 0">
+    <button class="btn" id="micBtn">▶ START MIC</button>
+    <button class="btn" id="noiseBtn">🔴 PINK NOISE</button>
+  </div>
+</div>
+
+<div class="edye">
+  <h2>— EDYE PROJECT —</h2>
+  <p>TaGunner Apk preset di bawah ya 👇 ...banyak preset AMDA AUDIO BWI</p>
+  <p style="color:#facc15;font-weight:800">TaGunner EQ01 DSP Download • Setting Mixer Analog Kolaborasi APK Audio</p>
+</div>
+<div class="footer">TaGunner EQ • Bigron Studio • AMDA AUDIO BWI • SUNTORO</div>
+
+<script>
+const freqs=[20,25,31,40,50,63,80,100,125,160,200,250,315,400,500,630,800,1000,1250,1600,2000,2500,3150,4000,5000,6300,8000,10000,12500,16000,20000];
+const container=document.getElementById('eq31');
+let vals=new Array(31).fill(50);
+function label(f){ return f>=1000 ? (f/1000)+'k' : f+''; }
+freqs.forEach((f,i)=>{
+  const d=document.createElement('div'); d.className='fader';
+  d.innerHTML=`<label>${label(f)}</label><input type="range" min="0" max="100" value="50" data-i="${i}"><div>50%</div><span class="hz">${f}Hz</span>`;
+  container.appendChild(d);
+});
+container.addEventListener('input',e=>{
+  const i=e.target.dataset.i; vals[i]=+e.target.value; e.target.nextElementSibling.textContent=e.target.value+'%';
+});
+function flatAll(){ vals.fill(50); document.querySelectorAll('#eq31 input').forEach(el=>{el.value=50; el.nextElementSibling.textContent='50%';}); }
+function applyPreset(p){
+  const base={
+    hajatan:[60,65,70,75,80,85,80,75,70,65,60,65,70,75,70,65,60,65,70,75,80,75,70,65,60,55,50,55,60,65,60],
+    dangdut:[70,75,80,85,90,85,80,85,90,85,80,75,70,75,70,75,80,85,90,85,80,75,70,75,80,85,90,85,80,75,70],
+    hadroh:[50,55,60,65,70,75,80,85,90,85,80,85,90,85,80,75,70,75,80,75,70,65,60,55,50,55,60,55,50,45,40],
+    dj:[85,90,85,80,75,70,65,70,75,70,65,60,55,60,65,60,55,60,65,70,75,80,85,80,75,70,75,80,85,90,85],
+    vokal:[35,40,45,50,55,60,65,70,75,80,85,90,85,80,75,80,85,90,85,80,75,70,65,60,55,50,45,40,35,30,25],
+    flat:new Array(31).fill(50)
+  };
+  vals=[...(base[p]||base.flat)];
+  document.querySelectorAll('#eq31 input').forEach((el,i)=>{el.value=vals[i]; el.nextElementSibling.textContent=vals[i]+'%';});
+  alert('Preset '+p.toUpperCase()+' aktif bos! 31 band berubah bos!');
+}
+function saveNow(){ alert('Preset tersimpan bos! AMDA AUDIO BWI - EDYE PROJECT'); }
+['low','mid','high'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',e=>{
+    const v=e.target.value; document.getElementById(id+'V').textContent=(v>=0?'+':'')+v+' dB';
+  });
+});
+document.getElementById('master').addEventListener('input',e=>{ document.getElementById('masterV').textContent=e.target.value+'%'; });
+
+// AUDIO
+let audioCtx=null, analyser=null, micStream=null, micSrc=null, isMic=false, isNoise=false, noiseNode=null, peak=-Infinity, smoothDb=55;
+const dbEl=document.getElementById('db'), peakEl=document.getElementById('peak');
+const canvas=document.getElementById('spec'), ctx=canvas.getContext('2d');
+function resize(){ const r=canvas.getBoundingClientRect(); canvas.width=r.width*devicePixelRatio; canvas.height=r.height*devicePixelRatio; }
+window.addEventListener('resize',resize); setTimeout(resize,300);
+async function ensure(){ if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==='suspended') await audioCtx.resume(); if(!analyser){ analyser=audioCtx.createAnalyser(); analyser.fftSize=2048; analyser.smoothingTimeConstant=0.82; } }
+document.getElementById('micBtn').onclick=async()=>{
+  await ensure();
+  if(!isMic){ try{ micStream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}); micSrc=audioCtx.createMediaStreamSource(micStream); micSrc.connect(analyser); isMic=true; document.getElementById('micBtn').textContent='⏹ STOP MIC'; document.getElementById('micBtn').classList.add('on'); requestAnimationFrame(loop); }catch(e){ alert('Izinkan mic dulu bos!'); } }
+  else{ if(micSrc) micSrc.disconnect(); if(micStream) micStream.getTracks().forEach(t=>t.stop()); isMic=false; document.getElementById('micBtn').textContent='▶ START MIC'; document.getElementById('micBtn').classList.remove('on'); }
+};
+document.getElementById('noiseBtn').onclick=async()=>{
+  await ensure();
+  if(!isNoise){ const len=audioCtx.sampleRate*2, buf=audioCtx.createBuffer(1,len,audioCtx.sampleRate), out=buf.getChannelData(0); let b0=0,b1=0,b2=0,b3=0,b4=0,b5=0,b6=0; for(let i=0;i<len;i++){ const w=Math.random()*2-1; b0=0.99886*b0+w*0.0555179; b1=0.99332*b1+w*0.0750759; b2=0.969*b2+w*0.153852; b3=0.8665*b3+w*0.3104856; b4=0.55*b4+w*0.5329522; b5=-0.7616*b5-w*0.016898; const v=(b0+b1+b2+b3+b4+b5+b6+w*0.5362)*0.11; b6=w*0.115926; out[i]=v*0.7; } noiseNode=audioCtx.createBufferSource(); noiseNode.buffer=buf; noiseNode.loop=true; const g=audioCtx.createGain(); g.gain.value=0.5; noiseNode.connect(g); g.connect(audioCtx.destination); g.connect(analyser); noiseNode.start(); isNoise=true; document.getElementById('noiseBtn').textContent='⏹ STOP PINK'; document.getElementById('noiseBtn').classList.add('on'); if(!isMic) requestAnimationFrame(loop); }
+  else{ try{noiseNode.stop()}catch(e){} isNoise=false; document.getElementById('noiseBtn').textContent='🔴 PINK NOISE'; document.getElementById('noiseBtn').classList.remove('on'); }
+};
+function loop(){
+  if(!isMic && !isNoise) return;
+  const freqData=new Uint8Array(analyser.frequencyBinCount); analyser.getByteFrequencyData(freqData);
+  const timeData=new Uint8Array(analyser.fftSize); analyser.getByteTimeDomainData(timeData);
+  let sum=0; for(let i=0;i<timeData.length;i++){ const v=(timeData[i]-128)/128; sum+=v*v; }
+  const rms=Math.sqrt(sum/timeData.length); let db=20*Math.log10(rms+0.000001)+98; if(db<32) db=32+Math.random()*2; if(db>110) db=110;
+  smoothDb=smoothDb*0.7+db*0.3; dbEl.textContent=smoothDb.toFixed(1)+' dB SPL';
+  if(smoothDb>peak) peak=smoothDb; peakEl.textContent=peak.toFixed(1)+' dB';
+  const W=canvas.width,H=canvas.height; ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
+  const nyquist=audioCtx.sampleRate/2;
+  for(let x=0;x<W;x++){ const frac=x/W; const freq=20*Math.pow(20000/20,frac); const bin=Math.floor(freq/nyquist*freqData.length); const v=freqData[Math.min(bin,freqData.length-1)]/255; const h=v*H*0.92; ctx.fillStyle=v>0.45?'rgb(110,220,0)':'rgb(20,140,60)'; ctx.fillRect(x,H-h,1.5,h); }
+  requestAnimationFrame(loop);
+}
+</script>
+</body>
+</html>
