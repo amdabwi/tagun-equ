@@ -1,0 +1,24 @@
+{
+  "name": "TaGunner EQ - AMDA AUDIO",
+  "short_name": "TaGunner EQ",
+  "description": "TaGunner EQ V15 - AMDA AUDIO - Bisa Offline",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/727/727269.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/727/727269.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
