@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TaGunner EQ V14 - AMDA AUDIO</title><link rel="stylesheet" href="style.css"></head>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TaGunner EQ V15 - AMDA AUDIO</title><link rel="stylesheet" href="style.css"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#020617"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
 <body>
-<div class="top"><h1>TaGunner<br><b>EQ</b></h1><div class="sub">AMDA • AUDIO • V14</div><div class="bar"></div></div>
+<div class="top"><h1>TaGunner<br><b>EQ</b></h1><div class="sub">AMDA • AUDIO • V15 • BISA OFFLINE • JADI APLIKASI</div><div class="bar"></div></div>
 <div class="menu" id="topMenu">
 <button class="on" onclick="showPage('home',this)">🏠 HOME</button>
 <button onclick="showPage('dynamics',this)">📈 DYNAMICS</button>
@@ -12,7 +12,7 @@
 <button onclick="showPage('preset',this)">🎵 PRESET</button>
 <button onclick="showPage('setting',this)">⚙️ SETTING</button>
 </div>
-<div class="warn">🎧 VU </div>
+<div class="warn">🎧 VU WES ALUS BOS! - <button onclick="installApp()" style="background:#000;color:#ffd700;border:0;padding:4px 10px;border-radius:10px;font-weight:900">📲 INSTALL JADI APLIKASI</button></div>
 <div class="player">
 <button onclick="document.getElementById('file').click()">📂 PILIH LAGU MP3</button>
 <input type="file" id="file" accept="audio/*">
@@ -20,13 +20,13 @@
 <button class="play" id="playBtn">▶️ PLAY</button><button id="stopBtn">⏹️ STOP</button><br>
 <input type="range" id="seek" value="0"><div id="time">00:00 / 00:00</div>
 <div class="vu"><div class="vu-bar"><i id="vuL" style="width:10%"></i></div><span>L</span><div class="vu-bar"><i id="vuR" style="width:10%"></i></div><span>R</span></div>
-<div style="font-size:11px;color:#aaa;margin:4px">VU SENSITIF: <input type="range" id="vuSens" min="20" max="100" value="45" style="width:120px;accent-color:#ffd700" oninput="document.getElementById('vuSensV').textContent=this.value+'%'"> <span id="vuSensV">45%</span> - Nek isek mentok, mudunke dadi 30% bos!</div>
+<div style="font-size:11px;color:#aaa;margin:4px">VU SENSITIF: <input type="range" id="vuSens" min="20" max="100" value="35" style="width:120px;accent-color:#ffd700" oninput="document.getElementById('vuSensV').textContent=this.value+'%'"> <span id="vuSensV">35%</span> - Nek isek mentok, mudunke dadi 30% bos!</div>
 <div class="mini"><button>🔀 SHUFFLE</button><button>🔁 REPEAT</button><button>❤️ FAVORIT</button><button>📤 SHARE</button></div>
 </div>
 <div id="page-home" class="page show">
 <div class="card"><div class="row"><span>● TaGunner EQ Premium</span><span>DSP • 31 BAND • 8D</span></div>
 <div class="pill"><button class="on" onclick="setPill(this,'MIX BUS')">MIX BUS ▼</button><button onclick="setPill(this,'HEAD')">HEAD</button><button onclick="setPill(this,'LIMITER')">LIMITER</button><button onclick="setPill(this,'VU')">VU</button><button onclick="setPill(this,'ANALYZER')">ANALYZER</button><button onclick="setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">♭ FLAT</button></div>
-<div id="pillInfo">Mode: MIX BOSs</div>
+<div id="pillInfo">Mode: MIX BUS bos! Pencet ANALYZER ben joget!</div>
 <div id="analyzerBox" style="display:block;background:#000;border:1px solid #a855f7;border-radius:12px;padding:10px;margin-top:8px;text-align:center">📊 ANALYZER JOGET BOS! GAK ENEK FILE YO JOGET!<div class="bars" id="anaBars"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
 </div>
 <div class="eq" id="eqHome"></div>
@@ -38,12 +38,14 @@
 <div id="page-parametric" class="page"><div class="big">〰️ PARAMETRIC EQ</div><div class="box"><b>BAND 1 - LOW:</b> Freq <input type="range" min="20" max="200" value="60" style="width:100%"> Gain <input type="range" min="-12" max="12" value="4" style="width:100%"><br><br><b>BAND 2 - MID:</b> Freq <input type="range" min="200" max="1000" value="400" style="width:100%"> Gain <input type="range" min="-12" max="12" value="2" style="width:100%"><br><br><b>BAND 3 - HIGH MID:</b> Freq <input type="range" min="1000" max="5000" value="2500" style="width:100%"> Gain <input type="range" min="-12" max="12" value="3" style="width:100%"><br><br><b>BAND 4 - HIGH:</b> Freq <input type="range" min="5000" max="20000" value="10000" style="width:100%"> Gain <input type="range" min="-12" max="12" value="2" style="width:100%"><br><br><button class="btn-gold" onclick="alert('Parametric disimpen bos!')">💾 SIMPAN PARAMETRIC</button></div></div>
 <div id="page-mixer" class="page"><div class="big">🎚️ MIXER</div><div class="box"><b>CH 1 - MUSIK:</b><input type="range" min="0" max="100" value="80" style="width:100%"><br><br><b>CH 2 - VOKAL:</b><input type="range" min="0" max="100" value="60" style="width:100%"><br><br><b>CH 3 - BASS:</b><input type="range" min="0" max="100" value="90" style="width:100%"><br><br><b>CH 4 - SULING / MELODI:</b><input type="range" min="0" max="100" value="70" style="width:100%"><br><br><b>CH 5 - MONITOR:</b><input type="range" min="0" max="100" value="50" style="width:100%"></div></div>
 <div id="page-preset" class="page"><div class="big">🎵 PRESET</div><div class="grid"><button onclick="setPreset([3,5,4,3,4,5,4,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);showPage('home',document.querySelector('#topMenu button'));alert('DANGDUT aktif bos!')">DANGDUT</button><button onclick="setPreset([6,6,5,4,3,2,1,0,0,0,0,1,2,3,3,2,1,0,0,0,1,2,3,3,2,1,0,0,0,0,0]);showPage('home',document.querySelector('#topMenu button'));alert('DJ KOPLO aktif bos!')">DJ / KOPLO</button><button onclick="setPreset([5,5,4,4,3,3,2,2,1,1,2,2,3,3,4,4,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0]);showPage('home',document.querySelector('#topMenu button'));alert('HOREG aktif bos!')">HOREG</button><button onclick="setPreset([4,4,4,3,3,2,2,1,1,2,2,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);showPage('home',document.querySelector('#topMenu button'));alert('JARANAN aktif bos!')">JARANAN</button><button onclick="setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);showPage('home',document.querySelector('#topMenu button'));alert('FLAT aktif bos!')">FLAT</button><button onclick="setPreset([6,5,5,4,4,3,3,2,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);showPage('home',document.querySelector('#topMenu button'));alert('BASS BOOST aktif bos!')">BASS BOOST</button></div></div>
-<div id="page-setting" class="page"><div class="big">⚙️ SETTING</div><div class="box"><b>Tema:</b> <button class="btn-blue" onclick="document.body.style.background='#020617'">🌑 GELAP</button> <button class="btn-gold" onclick="document.body.style.background='#1a1a1a'">🌕 ABU</button><br><br><b>Versi:</b> V14 VU ALUS<br><b>©:</b> AMDA • AUDIO<br><br><button class="btn-red" onclick="location.reload()">🔄 RESET</button></div></div>
+<div id="page-setting" class="page"><div class="big">⚙️ SETTING</div><div class="box"><b>Tema:</b> <button class="btn-blue" onclick="document.body.style.background='#020617'">🌑 GELAP</button> <button class="btn-gold" onclick="document.body.style.background='#1a1a1a'">🌕 ABU</button><br><br><b>Versi:</b> V15 PWA OFFLINE<br><b>©:</b> AMDA • AUDIO<br><br><button class="btn-red" onclick="location.reload()">🔄 RESET</button></div></div>
 <div class="sec">🛠️ TOOLS</div>
 <div class="tools"><button onclick="setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])">♭ FLAT</button><button onclick="alert('Disimpen bos!')">💾 SAVE</button><button onclick="alert('Dibuka bos!')">📂 LOAD</button><button id="bypassBtn">🚫 BYPASS</button><button id="muteBtn">🔇 MUTE</button><button id="soloBtn">🎧 SOLO</button><button onclick="alert('Auto EQ aktif bos!')">🤖 AUTO</button><button onclick="location.reload()">🔄 RESET</button></div>
-<p class="foot">TaGunner EQ V14 • AMDA • AUDIOh</p>
+<p class="foot">TaGunner EQ V15 • PWA OFFLINE • AMDA • AUDIO bos!</p>
 <div class="bottom-menu"><button onclick="showPage('home',this)" class="on">🏠 HOME</button><button onclick="showPage('dynamics',this)">📈 DYN</button><button onclick="showPage('fx',this)">🎛️ FX</button><button onclick="showPage('spatial',this)">🌀 8D</button><button onclick="showPage('mixer',this)">🎚️ MIXER</button><button onclick="showPage('preset',this)">🎵 PRESET</button></div>
 <script>
+let deferredPrompt=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;});function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(r=>{if(r.outcome=='accepted')alert('Wes ke-install bos! Cek Home Screen!');deferredPrompt=null;});}else{alert('Carane manual bos! Pencet titik 3 neng Chrome > Tambahkan ke Layar Utama / Add to Home Screen!');}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').then(()=>console.log('SW OK bos!')).catch(()=>console.log('SW gagal bos!'));}
 function showPage(n,b){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById('page-'+n).classList.add('show');document.querySelectorAll('#topMenu button').forEach(x=>x.classList.remove('on'));if(b)b.classList.add('on');window.scrollTo(0,0)}
 function setPill(btn,txt){document.querySelectorAll('.pill button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.getElementById('pillInfo').textContent='Mode: '+txt+' bos! JOGET!';if(txt=='MIX BUS')setPreset([3,3,3,2,2,2,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);if(txt=='HEAD')setPreset([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,4,3,2,1,0,0,0]);if(txt=='LIMITER'){if(masterGain)masterGain.gain.value=0.7;document.getElementById('master').value=70;document.getElementById('masterV').textContent='70%';}}
 let freqs=[20,25,31,40,50,63,80,100,125,160,200,250,315,400,500,630,800,1000,1250,1600,2000,2500,3150,4000,5000,6300,8000,10000,12500,16000,20000];
