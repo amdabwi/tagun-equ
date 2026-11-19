@@ -19,10 +19,6 @@ body{margin:0;background:radial-gradient(600px 300px at 50% 0%,#1a0033 0%,#02061
 input[type=file]{display:none}
 #seek{width:100%;accent-color:#a855f7}
 #time{font-size:12px;color:#aaa}
-.video-mini{margin:8px 0}
-.video-mini span{font-size:10px;color:#00e5ff;font-weight:800}
-.vid-box{background:#000;border:1px solid #a855f7;border-radius:12px;padding:12px;margin-top:4px;font-weight:900;color:#ffd700}
-.vid-box small{color:#fff;font-weight:400}
 .vu{display:flex;gap:4px;align-items:center;justify-content:center;margin:8px 0}
 .vu-bar{flex:1;height:10px;background:#1e293b;border-radius:10px;overflow:hidden}
 .vu-bar i{display:block;height:100%;background:linear-gradient(90deg,#00ff00,#ffd700,#ff0055)}
@@ -55,7 +51,6 @@ input[type=file]{display:none}
 .big{font-size:24px;text-align:center;margin:14px 0;font-weight:900}
 .box{background:#0b1a2e;border:1px solid #a855f7;border-radius:16px;padding:15px;margin:8px 0}
 .box b{color:#00e5ff}
-.center{text-align:center;margin:10px}
 .btn-blue{background:#00e5ff;border:0;padding:12px 20px;border-radius:20px;font-weight:900;color:#000}
 .btn-gold{background:#ffd700;border:0;padding:12px 20px;border-radius:20px;font-weight:900;color:#000}
 .btn-red{background:#ff0055;color:#fff;border:0;padding:12px 20px;border-radius:20px;font-weight:900}
